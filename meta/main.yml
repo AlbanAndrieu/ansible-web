@@ -1,7 +1,7 @@
 ---
 
-dependencies:
-  - { role: geerlingguy.phpmyadmin }
+dependencies: []
+#  - { role: geerlingguy.phpmyadmin }
 
 #  - { role: geerlingguy.apache }
 #  - { role: geerlingguy.mysql }
