@@ -15,8 +15,20 @@ install:
   #- ansible-galaxy install geerlingguy.mysql
   #- ansible-galaxy install geerlingguy.apache
   #- ansible-galaxy install geerlingguy.php
-  #- ansible-galaxy install geerlingguy.php-mysql       
-  #- ansible-galaxy install geerlingguy.phpmyadmin   
+  #- ansible-galaxy install geerlingguy.php-mysql
+  #- ansible-galaxy install geerlingguy.phpmyadmin
+  - git clone https://github.com/Stouts/Stouts.python.git python
+  - git clone https://github.com/debops/ansible-role-ansible.git ansible
+  - git clone https://github.com/geerlingguy/ansible-role-ntp.git geerlingguy.ntp
+  - git clone https://github.com/AlbanAndrieu/ansible-locale.git locale
+  - git clone https://github.com/AlbanAndrieu/ansible-hostname.git alban.andrieu.hostname
+  - git clone https://github.com/AlbanAndrieu/ansible-java.git java
+  - git clone https://github.com/AlbanAndrieu/ansible-common.git alban.andrieu.common  
+  - git clone https://github.com/geerlingguy/ansible-role-apache.git geerlingguy.apache
+  - git clone https://github.com/geerlingguy/ansible-role-phpmyadmin.git geerlingguy.phpmyadmin
+  - git clone https://github.com/geerlingguy/ansible-role-mysql.git geerlingguy.mysql
+  - git clone https://github.com/geerlingguy/ansible-role-php-mysql.git geerlingguy.php-mysql
+  - git clone https://github.com/geerlingguy/ansible-role-php.git geerlingguy.php
 
 script:
   - ansible --version

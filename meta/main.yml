@@ -1,8 +1,12 @@
 ---
-
-dependencies: []
-#  - { role: geerlingguy.phpmyadmin }
-
+#dependencies: []
+dependencies: 
+  - { role: alban.andrieu.common }
+#  - { role: alban.andrieu.hostname }
+#  - { role: geerlingguy.ntp }
+  - { role: geerlingguy.phpmyadmin }
+  - { role: alban.andrieu.pagespeed }
+  
 #  - { role: geerlingguy.apache }
 #  - { role: geerlingguy.mysql }
 #  - { role: geerlingguy.php-mysql }
@@ -30,7 +34,9 @@ galaxy_info:
 
 ansigenome_info:
   galaxy_id: ''
-
+  galaxy_user: 'alban.andrieu'
+  galaxy_name: 'web'
+  
   travis: False
 
   synopsis: |
