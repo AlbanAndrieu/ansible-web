@@ -1,12 +1,12 @@
 ---
 #dependencies: []
-dependencies: 
+dependencies:
   - { role: alban.andrieu.common }
 #  - { role: alban.andrieu.hostname }
 #  - { role: geerlingguy.ntp }
   - { role: geerlingguy.phpmyadmin }
   - { role: alban.andrieu.pagespeed }
-  
+
 #  - { role: geerlingguy.apache }
 #  - { role: geerlingguy.mysql }
 #  - { role: geerlingguy.php-mysql }
@@ -14,7 +14,7 @@ dependencies:
 
 galaxy_info:
   author: Alban Andrieu
-  description: A role for installing eclipse
+  description: A role for installing web
   company: Nabla
   license: GPLv3
   min_ansible_version: 1.6.3
@@ -36,7 +36,7 @@ ansigenome_info:
   galaxy_id: ''
   galaxy_user: 'alban.andrieu'
   galaxy_name: 'web'
-  
+
   travis: False
 
   synopsis: |

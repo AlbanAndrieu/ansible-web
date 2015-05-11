@@ -1,9 +1,10 @@
 ---
 # These tasks install http and the php modules.
 
+#TODO use role instead
 - name: Web | Install http (apache) and php etc)
   yum: name={{ item }} state=present
-  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'    
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
   with_items:
    - httpd
    - php
@@ -12,9 +13,10 @@
    - libsemanage-python
    - libselinux-python
 
+#TODO use role instead
 - name: Web | Install http (apache) and php etc)
   apt: pkg={{ item }} state=present
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'  
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
   with_items:
    - apache2
    - php5
@@ -30,11 +32,11 @@
 
 - name: Web | http (apache) service state
   service: name=httpd state=started enabled=yes
-  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'    
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 
 - name: Web | http (apache) service state
   service: name=apache2 state=started enabled=yes
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'  
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - name: Web | Enable the default site
   action: command a2ensite 000-default
@@ -42,6 +44,6 @@
   tags: apache
 
 #- name: Web | Configure SELinux to allow httpd to connect to remote database
-#  seboolean: name=httpd_can_network_connect_db state=true persistent=yes 
+#  seboolean: name=httpd_can_network_connect_db state=true persistent=yes
 
 #look result at : https://localhost/html/
