@@ -4,7 +4,7 @@ dependencies:
   - { role: alban.andrieu.common }
 #  - { role: alban.andrieu.hostname }
 #  - { role: geerlingguy.ntp }
-  - { role: geerlingguy.phpmyadmin }
+#TODO  - { role: geerlingguy.phpmyadmin }
   - { role: alban.andrieu.pagespeed }
 
 #  - { role: geerlingguy.apache }

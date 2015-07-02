@@ -1,9 +1,11 @@
 httpd_port: 8081
 repository: http://github.com/bennojoy/mywebapp.git
+repository_version: HEAD
 mysql_root_username: root
-mysql_root_password: microsoft      
+mysql_root_password: microsoft
 
 web_base_dir: "/var/www/html"
+php_enable: yes
 
 docker_files_generated_directory: "./"
 docker_files_enable: no

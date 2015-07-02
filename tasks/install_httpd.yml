@@ -30,6 +30,9 @@
 #              line="-A INPUT -p tcp  --dport {{ httpd_port }} -j  ACCEPT"
 #  notify: restart iptables
 
+- name: Web | Enable some required modules (rewrite vhost_alias expires headers)
+  action: command a2enmod rewrite vhost_alias expires headers mime autoindex deflate
+
 - name: Web | http (apache) service state
   service: name=httpd state=started enabled=yes
   when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
