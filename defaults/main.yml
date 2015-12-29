@@ -1,10 +1,11 @@
 httpd_port: 8081
-repository: http://github.com/bennojoy/mywebapp.git
-repository_version: HEAD
+repository: https://github.com/AlbanAndrieu/nabla-servers-bower-sample.git
+#repository_version: HEAD
+repository_version: gh-pages
 mysql_root_username: root
 mysql_root_password: microsoft
 
-web_base_dir: "/var/www/html"
+web_base_dir: "/var/www/nabla"
 php_enable: yes
 
 docker_files_generated_directory: "./"
