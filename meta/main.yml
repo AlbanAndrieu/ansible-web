@@ -17,7 +17,7 @@ galaxy_info:
   description: A role for installing web
   company: Nabla
   license: GPLv3
-  min_ansible_version: 1.6.3
+  min_ansible_version: 2.1.1
   platforms:
   - name: EL
     versions:
@@ -31,19 +31,3 @@ galaxy_info:
   categories:
     - development
     - web
-
-ansigenome_info:
-  galaxy_id: ''
-  galaxy_user: 'alban.andrieu'
-  galaxy_name: 'web'
-
-  travis: False
-
-  synopsis: |
-    Describe your role in a few paragraphs....
-
-  usage: |
-    Describe how to use in more detail...
-
-  #custom: |
-  #  Any custom output you want after the usage section..
