@@ -41,6 +41,16 @@
   service: name=apache2 state=started enabled=yes
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
+- name: Web | Disable the awx site
+  action: command a2dissite awx-httpd-7077
+#  ignore_errors: yes
+  tags: apache
+
+- name: Web | Disable the jenkins site
+  action: command a2dissite jenkins
+#  ignore_errors: yes
+  tags: apache
+
 - name: Web | Enable the default site
   action: command a2ensite 000-default
 #  ignore_errors: yes

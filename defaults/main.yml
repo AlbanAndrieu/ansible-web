@@ -5,7 +5,7 @@ repository_version: gh-pages
 mysql_root_username: root
 mysql_root_password: microsoft
 
-web_base_dir: "/var/www/nabla"
+web_base_dir: "/var/www/sample"
 php_enable: yes
 
 docker_files_generated_directory: "./"
