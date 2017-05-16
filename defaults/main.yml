@@ -1,4 +1,8 @@
 httpd_port: 8081
+
+apache_owner: "{{ user }}"
+apache_group: "{{ apache_owner }}"
+
 repository: https://github.com/AlbanAndrieu/nabla-servers-bower-sample.git
 #repository_version: HEAD
 repository_version: gh-pages
