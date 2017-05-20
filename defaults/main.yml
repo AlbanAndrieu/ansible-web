@@ -4,13 +4,14 @@ httpd_port: 8081
 apache_owner: "root"
 apache_group: "{{ apache_owner }}"
 
+web_base_dir: "/var/www/sample"
+
 repository: https://github.com/AlbanAndrieu/nabla-servers-bower-sample.git
 #repository_version: HEAD
 repository_version: gh-pages
 mysql_root_username: root
 mysql_root_password: microsoft
 
-web_base_dir: "/var/www/sample"
 php_enable: yes
 
 docker_files_generated_directory: "./"
