@@ -4,6 +4,7 @@
 
 - name: Web | Copy the code from repository
   git: repo={{ repository }} version={{ repository_version }} dest={{ web_base_dir }}/
+  ignore_errors: yes  
   become: yes
 
 - name: Web | Creates the index.php file
@@ -11,4 +12,13 @@
   when: php_enable
   become: yes
 
+- name: Web | Change destination directory ownership
+  file:
+    dest="{{ web_base_dir }}/"
+    state=directory
+    owner="{{ apache_owner }}"
+    group="{{ apache_group }}"
+  ignore_errors: true
+  become: yes
+  
 #See result at http://localhost:{{apache_listen_port}}/
