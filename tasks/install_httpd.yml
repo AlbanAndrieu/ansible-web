@@ -83,4 +83,19 @@
 #- name: Web | Configure SELinux to allow httpd to connect to remote database
 #  seboolean: name=httpd_can_network_connect_db state=true persistent=yes
 
+- name: Web | Add apache letsencrypt configuration.
+  template:
+    src: "le.conf.j2"
+    dest: "{{ apache_conf_path }}/sites-available/e.conf"
+    owner: root
+    group: root
+    mode: 0644
+  become: yes
+#  notify: restart apache
+  when: (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu') and apache_create_vhosts
+
+- name: Web | Enable the letsencrypt site
+  action: command a2enconf le
+  tags: apache
+
 #look result at : https://localhost/html/

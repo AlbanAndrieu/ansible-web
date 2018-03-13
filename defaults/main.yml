@@ -3,6 +3,9 @@ httpd_port: 8081
 #apache_owner: "{{ user }}"
 apache_owner: "root"
 apache_group: "{{ apache_owner }}"
+apache_directory : "apache2"
+apache_conf_path: "/etc/{{ apache_directory }}"
+#apache_log_path: "/var/log/{{ apache_directory }}"
 
 web_base_dir: "/var/www/sample"
 
