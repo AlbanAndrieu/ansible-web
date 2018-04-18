@@ -2,18 +2,29 @@ httpd_port: 8081
 
 #apache_owner: "{{ user }}"
 apache_owner: "root"
-apache_group: "{{ apache_owner }}"
+#id -Gn www-data
+#apache_group: "{{ apache_owner }}"
+apache_group: "www-data"
 apache_directory : "apache2"
 apache_conf_path: "/etc/{{ apache_directory }}"
 #apache_log_path: "/var/log/{{ apache_directory }}"
+apache_base_dir: "/var/www"
 
-web_base_dir: "/var/www/sample"
+web_base_dir: "{{ apache_base_dir }}/sample"
+web_download_dir: "{{ apache_base_dir }}/download"
+
+share_user: "root"
+share_group: "root"
+
+git_user: "jenkins"
 
 repository: https://github.com/AlbanAndrieu/nabla-servers-bower-sample.git
 #repository_version: HEAD
 repository_version: gh-pages
-mysql_root_username: root
-mysql_root_password: microsoft
+#mysql_root_username: root
+#mysql_root_password: microsoft
+mysql_user_name: root
+mysql_user_password: microsoft
 
 php_enable: yes
 

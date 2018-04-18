@@ -2,23 +2,35 @@
 # These tasks are responsible for copying the latest dev/production code from
 # the version control system.
 
-- name: Web | Copy the code from repository
-  git: repo={{ repository }} version={{ repository_version }} dest={{ web_base_dir }}/
-  ignore_errors: yes  
-  become: yes
-
-- name: Web | Creates the index.php file
-  template: src=index.php.j2 dest={{ web_base_dir }}/index.php
-  when: php_enable
-  become: yes
-
 - name: Web | Change destination directory ownership
   file:
     dest="{{ web_base_dir }}/"
     state=directory
-    owner="{{ apache_owner }}"
+    owner="{{ git_user }}"
     group="{{ apache_group }}"
+    recurse=yes
   ignore_errors: true
   become: yes
   
+- name: Web | Copy the code from repository
+  git: repo={{ repository }} version={{ repository_version }} dest={{ web_base_dir }}/
+  become_user: "{{ git_user }}"
+  #ignore_errors: yes  
+  become: yes
+
+- debug: var=hostvars[inventory_hostname]['ansible_default_ipv4']['address']
+
+- name: Web | Creates the ansible.html file
+  template: src=ansible.html.j2 dest={{ web_base_dir }}/ansible.html force=yes
+  become: yes
+  
+#Warning : make sure ansible_host=127.0.0.1 ansible_ssh_port=22 ansible_connection=ssh is in the inventory 
+- name: Web | Creates the index.php file
+  template: src=index.php.j2 dest={{ web_base_dir }}/index.php force=yes
+  when: php_enable
+  become: yes
+  
 #See result at http://localhost:{{apache_listen_port}}/
+
+- debug: msg="${hostvars.{$item}.ansible_hostname} --ip ${hostvars.${item}.ansible_em1.ipv4.address}"
+  with_items: ${groups.webservers}

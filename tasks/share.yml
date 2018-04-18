@@ -1,0 +1,95 @@
+---
+
+- name: share | Create link to shared directory
+  file:
+    src: "{{ item.path }}"
+    dest: "{{ apache_base_dir }}/{{ item.dest }}"
+    owner: "{{ share_user }}"    
+    group: "{{ share_group }}"
+    state: link
+  with_items:
+    - { path: '/nabla/release', dest: 'release' }
+    - { path: '/nabla/3rdparty/nist-data-mirror', dest: 'nist-data-mirror' }
+  changed_when: false
+  ignore_errors: true
+
+#usermod -a -G jenkins,docker,www-data jenkins
+
+- name: share | Create link to shared directory for website
+  file:
+    src: "{{ item.path }}"
+    dest: "{{ apache_base_dir }}/{{ item.dest }}"
+    owner: "{{ apache_owner }}"    
+    group: "{{ apache_group }}"
+    state: link
+  with_items:
+    - { path: '/nabla/release/site', dest: 'site' }
+  become: yes
+  changed_when: false
+  ignore_errors: true
+
+- name: share | Create {{ web_download_dir }} directory
+  file: path={{ web_download_dir }} state=directory
+  become: yes
+  changed_when: false
+  ignore_errors: true
+
+- name: share | Create link to shared directory for {{ web_download_dir }} directory
+  file:
+    src: "{{ item.path }}"
+    dest: "{{ web_download_dir }}/{{ item.dest }}"
+    owner: "{{ share_user }}"    
+    group: "{{ share_group  }}"
+    state: link
+  with_items:
+    - { path: '/nabla/apache', dest: 'apache' }
+    - { path: '/nabla/certs', dest: 'certs' }
+    - { path: '/nabla/checkmarx', dest: 'checkmarx' }
+    - { path: '/nabla/clang', dest: 'clang' }
+    - { path: '/nabla/cppcheck', dest: 'cppcheck' }
+    - { path: '/nabla/certs', dest: 'certs' }
+    - { path: '/nabla/dell', dest: 'dell' }
+    - { path: '/nabla/docker', dest: 'docker' }
+    - { path: '/nabla/elk', dest: 'elk' }
+    - { path: '/nabla/gcviewer', dest: 'gcviewer' }
+    - { path: '/nabla/gnustep', dest: 'gnustep' }
+    - { path: '/nabla/hpe', dest: 'hpe' }
+    - { path: '/nabla/jacoco', dest: 'jacoco' }
+    - { path: '/nabla/jdk', dest: 'jdk' }
+    - { path: '/nabla/jenkins', dest: 'jenkins' }
+    - { path: '/nabla/jrebel', dest: 'jrebel' }
+    - { path: '/nabla/maven', dest: 'maven' }
+    - { path: '/nabla/msys', dest: 'msys' }
+    - { path: '/nabla/nist', dest: 'nist' }
+    - { path: '/nabla/nodejs', dest: 'nodejs' }
+    - { path: '/nabla/npm', dest: 'npm' }
+    - { path: '/nabla/opencl', dest: 'opencl' }
+    - { path: '/nabla/openssl', dest: 'openssl' }
+    - { path: '/nabla/oracle', dest: 'oracle' }
+    - { path: '/nabla/phantomjs', dest: 'phantomjs' }
+    - { path: '/nabla/python', dest: 'python' }
+    - { path: '/nabla/pywin32', dest: 'pywin32' }
+    - { path: '/nabla/scons', dest: 'scons' }
+    - { path: '/nabla/selenium', dest: 'selenium' }
+    - { path: '/nabla/slimerjs', dest: 'slimerjs' }
+    - { path: '/nabla/sonar', dest: 'sonar' }
+    - { path: '/nabla/sunstudio', dest: 'sunstudio' }
+    - { path: '/nabla/tibco', dest: 'tibco' }
+    - { path: '/nabla/vagrant', dest: 'vagrant' }
+    - { path: '/nabla/virtualbox', dest: 'virtualbox' }
+    - { path: '/nabla/winnt-compilation-tools', dest: 'winnt-compilation-tools' }
+    - { path: '/nabla/yourkit', dest: 'yourkit' }
+    - { path: '/nabla/zap', dest: 'zap' }
+  become: yes
+  changed_when: false
+  ignore_errors: true
+
+- name: share | Copy the HEADER HEADER.html for {{ web_download_dir }} directory
+  template: src=HEADER-download.html.j2 dest={{ web_download_dir }}/README.html mode=0600 owner={{ share_user }} group={{ share_group }}
+  become: yes
+  changed_when: false
+
+- name: share | Copy the FOOTER README.html for {{ web_download_dir }} directory
+  template: src=README-download.html.j2 dest={{ web_download_dir }}/README.html mode=0600 owner={{ share_user }} group={{ share_group }}
+  become: yes
+  changed_when: false

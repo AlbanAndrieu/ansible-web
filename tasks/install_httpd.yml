@@ -6,6 +6,12 @@
 #              line="-A INPUT -p tcp  --dport {{ httpd_port }} -j  ACCEPT"
 #  notify: restart iptables
 
+- name: Web | Install perl for apache
+  action: "{{ ansible_pkg_mgr }} name={{ item }} state={{ util_pkg_state|default('present') }} update_cache=yes"
+  when: (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu')
+  with_items:
+   - libapache2-mod-perl2
+
 - name: Web | Enable some required modules rewrite vhost_alias expires (cache) headers deflate (compress)
   action: command a2enmod rewrite vhost_alias expires headers mime autoindex deflate ssl
   
@@ -31,7 +37,7 @@
 
 - name: Web | http (apache) service state
   service: name=httpd state=started enabled=yes
-  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+  when: (ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux')
 
 - name: Web | http (apache) service state
   service: name=apache2 state=started enabled=yes

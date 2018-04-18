@@ -1,0 +1,39 @@
+
+- name: Web | Install python tools for apache
+  action: "{{ ansible_pkg_mgr }} name={{ item }} state={{ util_pkg_state|default('present') }} update_cache=yes"
+  with_items:
+   - libsemanage-python
+   - libselinux-python
+
+#- name: Web | Install php 5 for apache
+#  action: "{{ ansible_pkg_mgr }} name={{ item }} state={{ util_pkg_state|default('present') }} update_cache=yes"
+#  when: (ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux')
+#  with_items:
+#   - php
+#   - php-mysql
+
+- import_tasks: dev.yml
+
+- name: Web | Install php 7 for apache
+  action: "{{ ansible_pkg_mgr }} name={{ item }} state={{ util_pkg_state|default('present') }} update_cache=yes"
+  when: (ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux')
+  with_items:
+   - php
+   - php-mysql
+   - php-devel
+
+#- name: Web | Install php 5 for apache
+#  action: "{{ ansible_pkg_mgr }} name={{ item }} state={{ util_pkg_state|default('present') }} update_cache=yes"
+#  when: (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu')
+#  with_items:
+#   - php5-dev
+#   - libapache2-mod-php5
+
+- name: Web | Install php 7 for apache
+  action: "{{ ansible_pkg_mgr }} name={{ item }} state={{ util_pkg_state|default('present') }} update_cache=yes"
+  when: (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu')
+  with_items:
+   - php7.0-dev 
+   - php7.0-cli
+   - libapache2-mod-fastcgi #(for cgi/PHP-FPM)
+   - libapache2-mod-php7.0

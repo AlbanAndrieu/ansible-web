@@ -1,0 +1,28 @@
+<html>
+ <head>
+  <title>Ansible Application</title>
+ </head>
+ <body>
+	 
+ <!-- {{ ansible_managed }} -->
+ </br>
+{% for host in groups['apache-servers'] %}
+{{ host }} ==> {{ hostvars[host] }}
+ <!-- host {{ host }} -->
+{% if hostvars[host] %}
+{% if hostvars[host]['ansible_hostname'] %}
+ <!-- ansible_hostname {{ hostvars[host]['ansible_hostname'] }} -->
+{% endif %}
+{% if hostvars[host]['ansible_fqdn'] %}
+  ansible_fqdn {{ hostvars[host]['ansible_fqdn'] }}
+{% endif %}
+{% if hostvars[host]['ansible_default_ipv4']['address'] %}
+ <a href={{ hostvars[host]['ansible_default_ipv4']['address'] }} > {{ hostvars[host]['ansible_fqdn'] }} </a>
+{% endif %}
+{% endif %}
+
+{% endfor %}
+ </br>
+</body>
+</html>
+

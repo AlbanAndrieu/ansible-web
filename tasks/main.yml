@@ -4,7 +4,9 @@
 #- include: install_httpd.yml
 
 - include: copy_code.yml
-  
+
+- include: share.yml
+
 - name: Copy Dockerfile
   template: src=Dockerfile.j2 dest={{ docker_files_generated_directory }}/Dockerfile mode=0777
   when: docker_files_enable
