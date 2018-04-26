@@ -15,25 +15,11 @@
 - name: Web | Enable some required modules rewrite vhost_alias expires (cache) headers deflate (compress)
   action: command a2enmod rewrite vhost_alias expires headers mime autoindex deflate ssl
   
+- name: Web | Enable some required advanced other modules
+  action: command a2enmod perl
+  
 - name: Web | Enable some required advanced modules proxy
   action: command a2enmod proxy proxy_ajp proxy_http  proxy_balancer proxy_connect proxy_html
-
-- name: Web | Install php for apache
-  action: "{{ ansible_pkg_mgr }} name={{ item }} state={{ util_pkg_state|default('present') }} update_cache=yes"
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-  with_items:
-   #- php5
-   #- libapache2-mod-php5 
-   - php7.0-dev 
-   - php7.0-cli  
-   - libapache2-mod-fastcgi
-   - libapache2-mod-php7.0
-
-- name: Web | Install perl for apache
-  action: "{{ ansible_pkg_mgr }} name={{ item }} state={{ util_pkg_state|default('present') }} update_cache=yes"
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-  with_items:
-   - libapache2-mod-perl2
 
 - name: Web | http (apache) service state
   service: name=httpd state=started enabled=yes

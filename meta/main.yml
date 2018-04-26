@@ -4,13 +4,13 @@ dependencies:
   - { role: alban.andrieu.common }
 #  - { role: alban.andrieu.hostname }
 #  - { role: geerlingguy.ntp }
-#TODO  - { role: geerlingguy.phpmyadmin }
   - { role: alban.andrieu.pagespeed }
 
 #  - { role: geerlingguy.apache }
 #  - { role: geerlingguy.mysql }
 #  - { role: geerlingguy.php-mysql }
 #  - { role: geerlingguy.php }
+#  - { role: geerlingguy.phpmyadmin }
 
 galaxy_info:
   author: Alban Andrieu
