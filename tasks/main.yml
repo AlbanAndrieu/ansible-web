@@ -1,5 +1,7 @@
 ---
 
+- include: user.yml
+
 #below apache installation has been moved to apache role
 #- include: install_httpd.yml
 
