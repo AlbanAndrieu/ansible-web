@@ -40,5 +40,5 @@ script:
   - sudo ansible --version
   - export ANSIBLE_ROLES_PATH="../"
 #  - echo localhost > inventory
-  - sudo ansible-playbook -i hosts --syntax-check web.yml
-  - sudo ansible-playbook -i hosts --connection=local --sudo -vvvv web.yml
+  - sudo ansible-playbook -i hosts --syntax-check web.yml  -e "git_user=root"
+  - sudo ansible-playbook -i hosts --connection=local --sudo -vvvv web.yml -e "git_user=root"
