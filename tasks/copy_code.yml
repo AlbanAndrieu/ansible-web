@@ -15,7 +15,7 @@
 - name: Web | Copy the code from repository
   git: repo={{ repository }} version={{ repository_version }} dest={{ web_base_dir }}/
   become_user: "{{ git_user }}"
-  #ignore_errors: yes
+  ignore_errors: yes
   become: yes
 
 - debug: var=hostvars[inventory_hostname]['ansible_default_ipv4']['address']
