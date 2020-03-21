@@ -16,13 +16,15 @@ web_download_dir: "{{ apache_base_dir }}/download"
 share_user: "root"
 share_group: "root"
 
+docker_group: "docker"
+
 jenkins_name: jenkins
 jenkins_user: jenkins
 # python -c "from passlib.hash import sha512_crypt; import getpass; print sha512_crypt.encrypt(getpass.getpass())"
 #jenkins1234
 #http://docs.ansible.com/faq.html#how-do-i-generate-crypted-passwords-for-the-user-module
 jenkins_password: "$6$rounds=656000$ITswjqU77/RgGDEv$Vbv6Pw5UJEQQGXwZ4JiR0WXsZVSNAHY7NuWgid.yGLIxro27nZt7CIMwQrh4encLm9Db1RDscEjC1T9ldCgx61"
-jenkins_group: docker
+jenkins_group: "{{ docker_group }}"
 jenkins_gid: "2000"
 data_group: "www-data"
 data_gid: "33"

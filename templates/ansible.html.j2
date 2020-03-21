@@ -16,8 +16,8 @@
 {% if hostvars[host]['ansible_fqdn'] %}
   ansible_fqdn {{ hostvars[host]['ansible_fqdn'] }}
 {% endif %}
-{% if hostvars[host]['ansible_default_ipv4']['address'] %}
- <a href={{ hostvars[host]['ansible_default_ipv4']['address'] }} > {{ hostvars[host]['ansible_fqdn'] }} </a>
+{% if hostvars[host]['ansible_fqdn'] %}
+ <a href={{ hostvars[host]['ansible_fqdn'] }} > {{ hostvars[host]['ansible_fqdn'] }} </a>
 {% endif %}
 {% endif %}
 

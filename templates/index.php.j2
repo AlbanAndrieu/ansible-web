@@ -11,8 +11,8 @@
 {% if hostvars[host]['ansible_hostname'] %}
  <!-- ansible_hostname {{ hostvars[host]['ansible_hostname'] }} -->
 {% endif %}
-{% if hostvars[host]['ansible_default_ipv4']['address'] %}
- <a href=http://{{ hostvars[host]['ansible_default_ipv4']['address'] }}/index.html>{{ hostvars[host]['ansible_fqdn'] }}</a>
+{% if hostvars[host]['ansible_fqdn'] %}
+ <a href=http://{{ hostvars[host]['ansible_fqdn'] }}/index.html>{{ hostvars[host]['ansible_fqdn'] }}</a>
 {% endif %}
 {% endif %}
 {% endfor %}
@@ -23,9 +23,9 @@
  Print  "</BR>";
 echo  "List of Databases: </BR>";
 {% for host in groups['apache-servers'] %}
-{% if hostvars[host]['ansible_default_ipv4'] %}
+{% if hostvars[host]['ansible_fqdn'] %}
 $con = mysqli_connect('localhost', '{{ mysql_user_password }}', '{{ mysql_user_password }}');
-//$con = mysqli_connect('{{ hostvars[host].ansible_default_ipv4.address }}', '{{ mysql_user_password }}', '{{ mysql_user_password }}');
+//$con = mysqli_connect('{{ hostvars[host].ansible_fqdn }}', '{{ mysql_user_password }}', '{{ mysql_user_password }}');
 if( !$con ) // == null if creation of connection object failed
 { 
     // report the error to the user, then exit program

@@ -44,15 +44,9 @@
   with_items:
     - { path: '/nabla/apache', dest: 'apache' }
     - { path: '/nabla/certs', dest: 'certs' }
-    - { path: '/nabla/checkmarx', dest: 'checkmarx' }
-    - { path: '/nabla/clang', dest: 'clang' }
-    - { path: '/nabla/cppcheck', dest: 'cppcheck' }
-    - { path: '/nabla/certs', dest: 'certs' }
     - { path: '/nabla/dell', dest: 'dell' }
     - { path: '/nabla/docker', dest: 'docker' }
     - { path: '/nabla/elk', dest: 'elk' }
-    - { path: '/nabla/gcviewer', dest: 'gcviewer' }
-    - { path: '/nabla/gnustep', dest: 'gnustep' }
     - { path: '/nabla/hpe', dest: 'hpe' }
     - { path: '/nabla/jacoco', dest: 'jacoco' }
     - { path: '/nabla/jdk', dest: 'jdk' }
@@ -77,7 +71,6 @@
     - { path: '/nabla/tibco', dest: 'tibco' }
     - { path: '/nabla/vagrant', dest: 'vagrant' }
     - { path: '/nabla/virtualbox', dest: 'virtualbox' }
-    - { path: '/nabla/winnt-compilation-tools', dest: 'winnt-compilation-tools' }
     - { path: '/nabla/yourkit', dest: 'yourkit' }
     - { path: '/nabla/zap', dest: 'zap' }
   become: yes
