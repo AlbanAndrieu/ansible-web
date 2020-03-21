@@ -1,5 +1,4 @@
 ---
-#dependencies: []
 dependencies:
   - { role: alban.andrieu.common }
 #  - { role: alban.andrieu.hostname }
