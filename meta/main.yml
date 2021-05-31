@@ -1,9 +1,9 @@
 ---
 dependencies:
-  - { role: alban.andrieu.common }
-#  - { role: alban.andrieu.hostname }
+  - { role: albanandrieu.ansible_common }
+#  - { role: albanandrieu.ansible_hostname }
 #  - { role: geerlingguy.ntp }
-  - { role: alban.andrieu.pagespeed }
+  - { role: albanandrieu.pagespeed }
 
 #  - { role: geerlingguy.apache }
 #  - { role: geerlingguy.mysql }
@@ -27,6 +27,6 @@ galaxy_info:
   - name: Ubuntu
     versions:
     - all
-  categories:
+  galaxy_tags:
     - development
     - web

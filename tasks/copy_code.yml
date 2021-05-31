@@ -31,9 +31,9 @@
 # Getting the IP address of eth0 interface
 - debug: var=ansible_eth0.ipv4.address|default(ansible_all_ipv4_addresses[0])
 
-- name: Web | Creates the ansible.html file
-  template: src=ansible.html.j2 dest={{ web_base_dir }}/ansible.html force=yes
-  become: yes
+#- name: Web | Creates the ansible.html file
+#  template: src=ansible.html.j2 dest={{ web_base_dir }}/ansible.html force=yes
+#  become: yes
 
 # Warning : make sure ansible_host=127.0.0.1 ansible_ssh_port=22 ansible_connection=ssh is in the inventory
 - name: Web | Creates the index.php file
