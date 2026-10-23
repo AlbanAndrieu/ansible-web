@@ -1,13 +1,13 @@
 ---
 
-- include: user.yml
+- ansible.builtin.import_tasks: user.yml
 
 #below apache installation has been moved to apache role
 #- include: install_httpd.yml
 
-- include: copy_code.yml
+- ansible.builtin.import_tasks: copy_code.yml
 
-- include: share.yml
+- ansible.builtin.import_tasks: share.yml
 
 - name: Copy Dockerfile
   template: src=Dockerfile.j2 dest={{ docker_files_generated_directory }}/Dockerfile mode=0777
